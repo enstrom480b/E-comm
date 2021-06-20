@@ -1,0 +1,89 @@
+const mongoose=require('mongoose')
+const schema=mongoose.Schema
+const Carschema=new schema({
+carmake:{
+    type:String
+},
+carmodel:{
+    type:String
+},
+yearofmanufacture:{
+    type:Number
+},
+mileage:{
+    type:Number,
+    default:true
+},
+engine:{
+    type:String,
+    default:true
+},
+transmission:{
+    type:String,
+    default:true
+},
+color:{
+    type:String
+},
+price:{
+    type:Number
+},
+location:{
+    type:String
+},
+description:{
+    type:String
+},
+condition:{
+    type:String
+},
+bodytype:{
+    type:String
+},
+duty:{
+    type:String
+},
+interior:{
+    type:String
+},
+airbag:{
+    type:String
+},
+electricmirrors:{
+    type:String
+},
+tractioncontrol:{
+    type:String
+},
+airconditioning:{
+    type:String
+},
+powersteering:{
+    type:String
+},
+amfmradio:{
+    type:String
+},
+frontfoglamps:{
+    type:String
+},
+electricwindows:{
+    type:String
+},
+alloywheels:{
+    type:String
+},
+foglights:{
+    type:String
+},
+thumbstartignition:{
+    type:String
+},
+image:{
+    type:Array
+},user:{
+    type:String
+}
+})
+
+mongoose.model('cartable',Carschema)

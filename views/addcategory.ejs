@@ -1,0 +1,140 @@
+<div class="home">
+    <a style="color:black"href="/allcategory">Allcategory</a>
+    </div>
+
+  <div class="flex">
+    <div class="header">
+   <h1>Add Category</h1>
+    </div>
+   <div class="login">
+     </div>
+     <div class="outer">
+   <form action="/addcategory" method="post">
+   <div class="row">
+   <label>TITLE</label>
+   <input type="text" placeholder="title" name='title' required><br>
+    </div>
+     <div class="row">
+   <label>ITEM</label>
+   <input type="text" placeholder="item" name="item" required ><br>
+   </div>
+   <div class="row">
+    <label></label>
+    <button type="submit">submit</button>
+    </div>
+   </form>
+   </div>
+  </div>
+  
+  <style>
+  .header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .home>a{
+      width:200px;
+      padding: 5px;
+      background-color: wheat;
+      text-align: center;
+      font-size:15px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      list-style-type:none;
+      border-radius:5px;
+      box-shadow: 2px 2px 2px currentColor;
+      text-decoration: none;
+  
+      }
+  .home{
+    width: 80%;
+    height: 45px;
+    margin: 0 auto;
+    background-color:transparent;
+    line-height: 45px;
+  text-align: center;
+      border-bottom: 1px solid ivory;
+  }
+  .theform{
+    display: flex;
+    margin: auto;
+  }
+   *,
+       ::after,
+       ::before
+       {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+          font-family:montserrat;
+       }
+        body
+       {
+       background-color:rgb(90, 2, 2);
+       color:wheat;
+    
+       }
+       .flex{
+       display:flex;
+       flex-direction:row;
+       justify-content:center;
+       margin-top:10px;
+       }
+       .theform{
+       width: 450px;
+       display:table;
+       padding:20px;
+       background-color:#2c8F77;
+       border:solid 2px #000;
+       }
+       .row{
+       display:table-row;
+       }
+       .row label{
+       display:table-cell;
+       padding:10px;
+       text-align:right;
+       padding:10px;
+       }
+  
+       .row input{
+       display:table-cell;
+       padding:10px;
+       margin-top:10px;
+       font-family:montserrat;
+       }
+       .row button{
+       display:table-cell;
+       padding:2px;
+       padding:5px 40px;
+       margin-top:10px;
+       cursor:pointer;
+       outline:none;
+       border:none;
+       }
+       .login{
+         font-family: montserrat;
+           font-size:20px;
+           margin-top:20px;
+       
+       }
+   .login>a{
+           color: wheat;
+           text-decoration: none;
+   }
+       h1{
+           margin-bottom:20px;
+       }
+  .inner{
+    height: 500px;
+    margin: auto 0;
+  }
+  .outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+  }
+  
+       </style>
+   

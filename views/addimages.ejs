@@ -1,0 +1,176 @@
+<div class="home">
+  <a href="/home">Home</a>
+  <%= typeof msg!='undefined'?msg:''%>
+  </div>
+<div class="flex">
+  <div class="header">
+ <h1>Add Cars</h1>
+  </div>
+ <div class="login">
+   </div>
+   <div class="outer">
+ <form action="/addimages" method="post" enctype="multipart/form-data"id="form"  >
+ <div class="row">
+ <label>Pictures Upload</label>
+ <input type="file"  name="image"><br>
+ </div>
+</div>
+ <div class="row">
+ <label></label>
+ <button type="submit" name="send">submit</button>
+   <a href="/add/shoes">shoes</a>
+   <a href="/add/tshirt">tshirt</a>
+   <a href="/add/shorts">shorts</a>
+    <a href="/add/trousers">trousers</a>
+	  <a href="/add/sweaters">sweaters</a>
+ </div>
+ </form>
+ </div>
+
+
+<% if (typeof cartsys==='object'&&cartsys!=='undefined'){%>
+<%cartsys.forEach((data)=>{%>
+ <li><%=data.title%></li>
+
+	<%})%>
+<%}%> 
+
+</div>
+<style>
+:root{
+--modal-duration:3s;
+--primary-color:#30336b;
+--secondary-color:#be2edd;
+--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+--clr-white: #fff;
+--transition: all 0.3s linear;
+}
+
+a{
+color:white;
+}
+img{
+    height:150px;
+    width: 150px;
+    border-radius:2%;
+    background: var(--clr-white);
+    box-shadow: var(--light-shadow);
+    transition: var(--transition);
+    text-align: center;
+    background-size:cover;
+    object-fit: cover;
+
+
+}
+
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home>a{
+    width:200px;
+    padding: 5px;
+    background-color: wheat;
+    text-align: center;
+    font-size:15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style-type:none;
+    border-radius:5px;
+    box-shadow: 2px 2px 2px currentColor;
+    text-decoration: none;
+
+    }
+.home{
+  width: 80%;
+  height: 45px;
+  margin: 0 auto;
+  background-color:transparent;
+  line-height: 45px;
+text-align: center;
+    border-bottom: 1px solid ivory;
+}
+.theform{
+  display: flex;
+  margin: auto;
+}
+ *,
+     ::after,
+     ::before
+     {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+        font-family:montserrat;
+     }
+      body
+     {
+     background-color:rgb(90, 2, 2);
+     color:wheat;
+  
+     }
+     .flex{
+     display:flex;
+     flex-direction:row;
+     justify-content:center;
+     margin-top:10px;
+     }
+     .theform{
+     width: 450px;
+     display:table;
+     padding:20px;
+     background-color:#2c8F77;
+     border:solid 2px #000;
+     }
+     .row{
+     display:table-row;
+     }
+     .row label{
+     display:table-cell;
+     padding:10px;
+     text-align:right;
+     padding:10px;
+     }
+
+     .row input{
+     display:table-cell;
+     padding:10px;
+     margin-top:10px;
+     font-family:montserrat;
+     }
+     .row button{
+     display:table-cell;
+     padding:2px;
+     padding:5px 40px;
+     margin-top:10px;
+     cursor:pointer;
+     outline:none;
+     border:none;
+     }
+     .login{
+       font-family: montserrat;
+         font-size:20px;
+         margin-top:20px;
+     
+     }
+ .login>a{
+         color: wheat;
+         text-decoration: none;
+ }
+     h1{
+         margin-bottom:20px;
+     }
+.inner{
+  height: 500px;
+  margin: auto 0;
+}
+.outer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+     </style>
