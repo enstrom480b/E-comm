@@ -1,0 +1,17 @@
+<link href="/css/styles.css" rel="stylesheet" type="text/css">
+<a href="/home">Home</a>
+<h1>car listings</h1>
+
+<% if (data.length>0){%>
+<% data.forEach((data)=>{%>
+<ul>
+<li><%= data.carmake%></li>
+<li><%= data.carmodel%></li>
+<li><%= data.yearofmanufacture%></li>
+<li><%= data.mileage%></li>
+<li><%= data.engine%></li>
+<li><%= data.transmission%></li>
+<a href="/editpage/<%= data._id%>">Edit</a>
+</ul>
+<%})%>
+<%}%>

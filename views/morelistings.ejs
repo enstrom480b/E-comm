@@ -1,0 +1,565 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="menu-container">
+<div class="menu-left">
+<li><a href="/home">Home</a></li>
+<li><a href="/contacts">Contacts</a></li>
+<li><a href="/sell">Sell a car</a></li>
+</div>
+<div class="menu-right">
+<li style="background-color: red";><a style="color: wheat;"href="/logout">Logout</a></li>
+</div>
+</div>
+<div class="container">
+<% if (typeof data==='object'&& data) {%>  
+<div class="para">
+<h4>Year:<b><%= data.yearofmanufacture%></b></h4>
+<h4>Make:<b style="text-transform: capitalize;"><%= data.carmake%></b></h4>
+<h4>Location:<b style="text-transform: capitalize;"><%= data.location%></b></h4>
+</div>
+ <h3 >About This Car</h3>
+<p>The Audi is a real all-rounder,whether on holiday
+or in everyday life -it offers plenty of space and provides
+plenty of variability thanks to many 
+Dealer maintained. Good as new. Rare find.
+Features.</p>
+<div>
+    <div class="card-layout">
+    <div class="inner1">
+    <b><P>MLG(Highway)</P></b>
+    <p><%= data.engine%></p>
+    </div>
+    <div class="inner1">
+    <b><p>Miles(CITY)</p></b>
+    <p>11,591</p>
+    </div>
+    <div class="inner1">
+    <b><p>Engine</p></b>
+    <p>4 Cyl</p>
+    </div>
+    <div class="inner1">
+    <b><p>Color</p></b>
+    <p><%=data.color%></p>
+    </div>
+    <div class="inner1">
+    <b><p>Condition</p></b>
+    <p><%=data.condition%></p>
+    </div>
+ <%}%>
+</div>
+<div class="imagecontainer">
+    <div class="box">
+         <a data-fancybox="gallery" href= "/uploads/images/<%= data.image[0].filename%>">
+            <img src="/uploads/images/<%= data.image[0].filename%>"/>
+        </a> 
+    <% for(var i=0;i<data.image.length;i++){%>
+    <a data-fancybox="gallery"  hidden href= "/uploads/images/<%= data.image[i].filename%>">
+        <img hidden src="/uploads/images/<%= data.image[i].filename%>"/>
+    </a> 
+<%}%>
+</div>
+<div class="display-container-flex">
+      <div class="images">
+           <div class="inner-display-container">
+            <% for(var i=0;i<data.image.length;i++){%>
+            <img src="/uploads/images/<%= data.image[i].filename%>"/>
+            <%}%>
+           </div>  
+      </div>
+</div>
+</div>
+        <div class="outer-div">
+            <i class="fa fa-chevron-right 3x slick-prev" aria-hidden="true"></i>
+            <i class="fa fa-chevron-left  3x slick-next" aria-hidden="true"></i>
+             <div class="autoplay">
+                <% if (typeof morelistingsdata=='object'&& morelistingsdata) {%>
+                          <% for(var i=0;i<10;i++){%>
+                    <% morelistingsdata.forEach((data)=>{%> 
+                <div class="outer-container">
+                <div class="image">
+                    <img src="/uploads/images/<%= data.image[0].filename%> "/>
+                </div>
+                    <div class="innerdata">
+                     <ul>
+                        <li><%=data.location%></li>
+                        <li><%=data.price%></li>
+                        <li><%=data.carmake%></li>
+                        <li><%=data.carmodel%></li>  
+                 </ul>
+                </div>    
+                 </div>
+          <%})%>
+                <%}%>   
+        <%}%>
+             </div>
+        
+        </div>
+<% if (typeof data==='object'&& data) {%>  
+    <h1 style="color: black;">Price:Ksh<span> </span><%=data.price%></h1>
+<%}%>
+<div class="innerbox">
+<h3 style="color:black;">Additional Features</h3>
+<div class="innerfeature">
+<ul>
+    <% if (typeof data.powersteering!=='undefined'&& data) {%>  
+   <li><%= data.powersteering%></li>
+    <%}%>
+     
+    <% if (typeof data.amfmradio!=='undefined'&& data) {%>  
+   <li><%= data.amfmradio%></li>
+    <%}%>
+     
+    <% if (typeof data.frontfoglamps!=='undefined'&& data) {%>  
+    <li><%= data.frontfoglamps%></li>
+    <%}%>
+
+    <% if (typeof data.electricwindows!=='undefined'&& data) {%>  
+     <li><%= data.electricwindows%></li>
+        <%}%>
+</ul>
+<ul>
+    <% if (typeof data.alloywheels!=='undefined'&& data) {%>  
+    <li><%= data.alloywheels%></li>
+    <%}%>
+    <% if (typeof data.foglights!=='undefined'&& data) {%>  
+    <li><%= data.foglights%></li>
+    <%}%>
+    <% if (typeof data.interior!=='undefined'&& data) {%>  
+    <li><%= data.interior%></li>
+    <%}%>
+    <% if (typeof data.airbag!=='undefined'&& data) {%>  
+    <li><%= data.airbag%></li>
+    <%}%>
+    <% if (typeof data.electricmirrors!=='undefined'&& data) {%>  
+    <li><%= data.electricmirrors%></li>
+    <%}%>
+</ul>
+<ul>
+    <% if (typeof data.tractioncontrol!=='undefined'&& data) {%>  
+    <li><%= data.tractioncontrol%></li>
+    <%}%>
+    <% if (typeof data.airconditioning!=='undefined'&& data) {%>  
+    <li><%= data.airconditioning%></li>
+    <%}%>
+</ul>    
+<ul>
+    <% if (typeof data.description!=='undefined'&& data) {%>  
+    <li><%= data.description%></li>
+    <%}%>
+    <% if (typeof data.conditioning!=='undefined' && data) {%>  
+    <li><%= data.condition%></li>
+    <%}%>
+    <% if (typeof data.bodytype!=='undefined'&& data) {%>  
+    <li><%= data.bodytype%></li>
+    <%}%>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-container">
+    <div class="innerfooter">
+        <ul>
+    <li><a href="/home">            FAQ</a></li>
+    <li><a href="/home">            About kelekele</a></li>
+    <li><a href="/home">            Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="innerfooter">
+    <ul>
+    <li><a href="/contacts">   Billing Policy </a></li>
+    <li><a href="/home">       support@fsea.co.ke</a></li>
+    <li><a href="/contacts">   Safety Tips </a></li>
+    </ul>
+  </div>
+  <div class="innerfooter">
+    <ul>
+    <li><a href="/contacts">    fsea on FB </a>  </li>
+    <li><a href="/home">        Our Twitter  </a> </li>
+    <li><a href="/contacts">    Hot links </a> </li>
+    </ul>
+  </div>
+  </div>
+   <div class="footer-menu-container">
+          <ul>
+          <li><a href="/home">      Privacy Statement</a></li>
+          <li><a href="/contacts">  Terms and conditions</a></li>
+          <li><a href="/sell">      Subscribe to SMS alerts</a></li>   
+          </ul>
+  </div>
+<div class="outer-div">latest 
+    <i class="fa fa-chevron-right 3x slick-prev" aria-hidden="true"></i>
+    <i class="fa fa-chevron-left  3x slick-next" aria-hidden="true"></i>
+     <ul class="autoplay">
+     <li class="image">
+        <img src="/uploads/images/prado1.jpg"/>
+     </li>
+     <li class="image">
+        <img src="/uploads/images/prado2.jpg"/>
+     </li>
+     <li class="image">
+        <img src="/uploads/images/prado3.jpg"/>
+     </li>
+     <li class="image">
+        <img src="/uploads/images/prado4.jpg">
+     </li>
+     <li class="image">
+        <img src="/uploads/images/prado5.jpg"/>
+     </li>
+     </ul>
+ </div>
+
+<style>
+/*div carousel*/
+.outer-container{
+height: 300px;
+}
+.display-container-flex{
+    display: flex;
+}
+.imagecontainer .display-container-flex .images .inner-display-container img {
+    width:150px;
+    height:150px; 
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    filter: grayscale(1);
+}
+.inner-display-container{
+    width: 500px;
+}
+.imagecontainer .box{
+    width: 100%;
+    height:100%;
+}
+.imagecontainer{
+display:flex;
+width:60vw;
+height:25vw;
+}
+.imagecontainer img{
+    width:100%;
+    height:100%;;
+    object-fit: cover;
+    box-shadow: 2px 2px 2px 2px black;
+}
+.slick-prev {
+    left:50px;
+	z-index:10;
+ }
+.slick-next{
+    right:25px;
+ }
+ .autoplay{
+ height:300px;
+ margin-top:10px;
+ width:90%;
+ overflow:hidden;
+ margin-left: -40px;
+ }
+.autoplay .image>img
+{
+ width:100%;
+ height:100%;
+}
+.autoplay .image{
+height:190px;
+width:200px;
+display: flex;
+align-items:center;
+padding:5px;
+border:1px solid wheat;
+}
+/*div carousel*/
+.innerfeature li{
+ text-transform: capitalize;
+ }
+/*modal*/
+.images img:hover{
+transform:scale(0.9);
+}
+.modal{
+position:fixed;
+height:100%;
+width:100%;
+top:0;
+left:0;
+background-color:rgba(0,0,0,0.7);
+color:#fff;
+z-index:1;
+overflow:auto;
+opacity:0;
+pointer-events:none;
+}
+.modalcontent{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.modalimg{
+width:80%;
+max-width:300px;
+animation:zoom 0.3s linear;
+}
+.modaltxt{
+margin-top:1em;
+}
+.close{
+position:absolute;
+top:1em;
+right:1.5em;
+font-size:1.5em;
+cursor:pointer;
+}
+.display{
+opacity:1;
+pointer-events:all;
+}
+.modal .display .modalimg,
+modal .display .modaltxt{
+animation:zoom 0.3s linear;
+}
+@keyframes zoom{
+from{
+transform:scale(0);
+}
+to{
+transform:scale(1);
+}
+}
+h4{
+padding-left: 10px;
+}
+.para{
+display: flex;
+}
+.card-layout{
+display: flex;
+width: 400px;
+justify-content: space-between;
+height: 100px;
+}
+.menu-container 
+    {
+    display:flex;
+    justify-content:space-between;
+    height:45px;
+    width: 90vw;
+    margin:0 auto  10px;
+   background-color: rgb(90, 2, 2);
+   border-radius: 5px;
+    }
+    .menu-container>.menu-left>li ,
+    .menu-container>.menu-right>li{
+    display: inline;
+    line-height: 45px;
+    list-style-type: none;
+    padding: 5px;
+    background-color: wheat;
+    text-align: center;
+    font-size: 15px;
+    border-radius:5px;
+    margin: 0 5px;
+    }
+    .menu-container>.menu-right>li>a, 
+    .menu-container>.menu-left>li>a{
+    text-decoration: none;
+    padding-right:10px;
+    padding-left:10px;
+    text-align: center;
+    }
+.innerbox{
+width:400px;
+height:260px;
+}
+.innerfeature
+{
+justify-content: space-around;
+display: flex;
+color: black;
+line-height: 2rem;
+padding: 40px;
+font-weight: bolder;
+width: 600px;
+ font-weight: bolder;
+}
+.innerfeature>ul>li
+{
+list-style-type: disclosure-closed;
+border-bottom: 2px solid rgba(200, 200,200,0.1);
+padding-bottom: 1px;
+}
+.container>p{
+    width:400px;
+}
+.footer-menu-container{
+    margin-top: 10px;
+}
+.footer-menu-container>ul{
+    display: flex;
+    justify-content: center;
+    background-color: darkslategrey;
+    width:100%;
+    height: 45px;
+    line-height: 45px;
+    margin-top: 10px;
+ }
+.footer-menu-container>ul>li{
+    width:20%;
+    list-style-type: none;
+}
+ .footer-menu-container>ul>li>a{
+    text-decoration: none;
+    color:wheat;
+}
+ .footer-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    background-color:darkslategrey;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+}
+.innerfooter{
+  width: 30%;
+  border-right:1px solid red;
+  padding: 1%;
+}
+.innerfooter>ul>li>a{
+padding: 20px;
+color: wheat;
+padding: 20px;
+font-family:montserrat;
+font-size: 17px;
+letter-spacing: 3px;
+text-decoration: none;
+}
+.innerfooter>ul>li{
+  padding: 10px;
+  list-style-type: none;
+}
+body{
+   background-color: #ece4e4;
+}
+@media only screen and (max-width: 500px) 
+{
+.inner-display-container{
+  display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    background-color: brown;
+    height: 300px;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+}
+@media only screen and (max-width: 768px) 
+{
+.display-container-flex
+{
+    display: flex;
+}
+.imagecontainer .display-container-flex .images .inner-display-container img {
+    width: 50px;
+    height: 50px; 
+}
+.inner-display-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(42, 161, 165);
+    height: 300px;
+}
+.imagecontainer .box img{
+    width: 300px;
+    height:300px;
+}
+.imagecontainer{
+display:flex;
+width:65vw;
+height:60vw;
+}
+}
+@media only screen and (max-width: 1024px) 
+{
+ .display-container-flex
+{
+    display: flex;
+}
+.imagecontainer .display-container-flex .images .inner-display-container img {
+    width: 150px;
+    height: 150px; 
+}
+.inner-display-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    background-color: brown;
+    height: 300px;
+}
+.imagecontainer .box img{
+    width: 300px;
+    height:300px;
+}
+.imagecontainer{
+display: flex;
+width:65vw;
+height:60vw;
+}
+}
+</style>
+<script>
+var images=document.querySelectorAll('.images img')
+var modal=document.querySelector('.modal')
+var modalimg=document.querySelector('.modalimg')
+var modaltxt=document.querySelector('.modaltxt')
+var close=document.querySelector('.close')
+images.forEach((image)=>{
+image.addEventListener('click',(e)=>{
+modalimg.src=image.src
+modaltxt.innerHTML='image.alt';
+modal.classList.add('display')
+close.addEventListener('click',()=>{
+modal.classList.remove('display')
+})
+})
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$('.autoplay').slick({
+slidesToShow:3,
+lazyLoad: 'ondemand',
+slidesToScroll:1,
+autoplay:true,
+autoplaySpeed:2000,
+slickPlay:true,
+infinite:true,
+variableWidth:true,
+ centerMode: true,
+   responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+
+});
+</script>

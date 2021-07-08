@@ -1,0 +1,210 @@
+<div class="flex">
+    <div>
+   <h1>Add cars</h1>
+   <div class="theform">
+   <form action="/guest/addcars" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <label>Firstname</label>
+        <input type="text" placeholder="Firstname" name='firstname' required><br>
+         </div>
+         <div class="row">
+            <label>Lastname</label>
+            <input type="text" placeholder="Lastname" name='lastname' required><br>
+             </div>
+         <div class="row">
+            <label>Cellphone</label>
+            <input type="text" placeholder="Cell phone" name='cellphone' required><br>
+             </div>
+         <div class="row">
+            <label>Email Address</label>
+            <input type="text" placeholder="Email" name='email' required><br>
+             </div>
+
+   <div class="row">
+   <label>make</label>
+   <input type="text" placeholder="carmake" name='carmake' required><br>
+    </div>
+     <div class="row">
+   <label>model</label>
+   <input type="text" placeholder="carmodel" name="carmodel" required ><br>
+   </div>
+     <div class="row">
+   <label>year</label>
+   <input type="number" placeholder="yearofmanufacture" name="yearofmanufacture" ><br>
+   </div>
+     <div class="row">
+   <label>mileage</label>
+   <input type="number" placeholder="mileage" name="mileage"><br>
+   </div>
+   <div class="row">
+   <label>engine</label>
+   <input type="text" placeholder="engine" name="engine"><br>
+   </div>
+   <div class="row">
+   <label>transmission</label>
+   <input type="transmission" placeholder="transmission" name="transmission"><br>
+   </div>
+   <div class="row">
+   <label>color</label>
+   <input type="text" placeholder="color" name='color'><br>
+    </div>
+     <div class="row">
+   <label>price</label>
+   <input type="text" placeholder="price" name="price"><br>
+   </div>
+     <div class="row">
+   <label>location</label>
+   <input type="text" placeholder="location" name="location"><br>
+   </div>
+     <div class="row">
+   <label>description</label>
+   <input type="textarea" placeholder="description" name="description"><br>
+   </div>
+   <div class="row">
+   <label>condition</label>
+   <input type="text" placeholder="condition" name="condition"><br>
+   </div>
+   <div class="row">
+   <label>bodytype</label>
+   <input type="text" placeholder="bodytype" name="bodytype"><br>
+   </div>
+   <div class="row">
+   <label>duty </label>
+   <input type="text" placeholder="duty" name='duty'><br>
+    </div>
+     <div class="row">
+   <label>Interior</label>
+   <input type="text" placeholder="carmodel" name="interior"><br>
+   </div>
+   <div class="row">
+   <label>fileupload</label>
+   <input type="file"  name="image" ><br>
+   </div>
+   <div class="row">
+   <label>airbag</label>
+   <input type="checkbox" name="airbag" value="airbag">airbag
+   </div>
+   <div class="row">
+   <label>Electric Mirrors</label>
+   <input type="checkbox" name="electricmirrors" value="electricmirrors">Electric Mirrors
+   </div>
+   <div class="row">
+   <label>Traction Control</label>
+   <input type="checkbox" name="tractioncontrol" value="tractioncontrol">Traction Control
+   </div>
+   <div class="row">
+   <label>Air Conditioning</label>
+   <input type="checkbox" name="airconditioning" value="airconditioning">Air Conditioning
+   </div>
+   <div class="row">
+   <label>Power Steering</label>
+   <input type="checkbox" name="powersteering" value="powersteering">Power Steering
+   </div>
+   <div class="row">
+   <label>AM/FM Radio</label>
+   <input type="checkbox" placeholder="amfmradio" name="amfmradio" value="amfmradio">AM/FM radio<br>
+   </div>
+   <div class="row">
+   <label>Front Fog Lamps</label>
+   <input type="checkbox" name="frontfoglamps" value="frontfoglamps">Front Fog lamps
+   </div>
+   <div class="row">
+   <label>Electric Windows</label>
+   <input type="checkbox" name="electricwindows" value="electricwindows">Electric Windows
+   </div>
+   <div class="row">
+   <label>Alloy Wheels</label>
+   <input type="checkbox" name="alloywheels" value="alloywheels">Alloy Wheels
+   </div>
+   <div class="row">
+   <label>Fog Lights</label>
+   <input type="checkbox" name="FogLights" value="airbag">Fog Lights
+   </div>
+   <div class="row">
+   <label>Thumbstartignition</label>
+   <input type="checkbox" name="Thumbstartignition" value="airbag">Thumbstart Ignition
+   </div>
+   <div class="row">
+   <label></label>
+   <button type="submit">submit</button>
+   </div>
+   </form>
+   </div>
+   <div class="login">
+  <a href="/home">Home</a>
+   </div>
+   
+   
+   
+       <style>
+       *,
+       ::after,
+       ::before
+       {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+          font-family:montserrat;
+       }
+        body
+       {
+       background-color:rgb(90, 2, 2);
+       color:wheat;
+    
+       }
+       .flex{
+       display:flex;
+       flex-direction:row;
+       justify-content:center;
+       margin-top:10px;
+       }
+       .theform{
+       width: 450px;
+       display:table;
+       padding:20px;
+       background-color:#2c8F77;
+       border:solid 2px #000;
+       }
+       .row{
+       display:table-row;
+       }
+       .row label{
+       display:table-cell;
+       padding:10px;
+       text-align:right;
+       padding:10px;
+       }
+       .row input{
+       display:table-cell;
+       padding:10px;
+       margin-top:10px;
+       font-family:montserrat;
+       }
+       .row button{
+       display:table-cell;
+       padding:2px;
+       padding:5px 40px;
+       margin-top:10px;
+       cursor:pointer;
+       outline:none;
+       border:none;
+       }
+   
+     
+       .login{
+         font-family: montserrat;
+           font-size:20px;
+           margin-top:20px;
+       
+       }
+   .login>a{
+           color: wheat;
+           text-decoration: none;
+   }
+       h1{
+           margin-bottom:20px;
+       }
+       
+       </style>
+   

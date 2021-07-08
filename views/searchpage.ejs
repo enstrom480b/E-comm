@@ -1,0 +1,293 @@
+<body>
+    <div class="menu-container">
+    <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/contacts">Contacts</a></li>
+    <li><a href="/sell">Sell a car</a></li>
+    </ul>
+    </div>
+    <div class="header">
+        <div class="logo">
+            <img src="/uploads/images/logo.jpg"/>
+        </div>
+    <h1>Search results</h1>
+ </div>
+ <div class="outersection">
+ <div class="leftsearch">
+    <h4>Car Listings of Search results</h4>
+    <div class="searchpage">
+    <form method="post" action="/multisearch">
+    <select name="carmake">
+        <option value="mercedes">Mercedes</option>
+        <option value="bmw">BMW</option>
+        <option value="rangerover">RangeRover</option>
+        <option value="toyota">Toyota</option>
+        <option value="suzuki">Suzuki</option>
+        <option value="mercedes">Mercedes</option>
+    </select>
+    <select name="year">
+        <option value=2000>2000</option>
+        <option value=2001>2001</option>
+        <option value=2002>2002</option>
+        <option value=2003>2003</option>
+        <option value=2004>2004</option>
+        <option value=2005>2005</option>
+    </select>
+    <select name="model">
+        <option value='E200'>E200</option>
+        <option value='C180'>C180</option>
+        <option value='S350'>S350</option>
+        <option value='A180'>A180</option>
+        <option value='e250'>E250</option>
+    </select>
+    <select name="engine">
+        <option value='diesel'>Diesel</option>
+        <option value='electric'>Electric</option>
+    </select>
+    <select name="transmission">
+        <option value='manual'>Manual</option>
+        <option value='Automatic'>Automatic</option>
+    </select>
+    <button class="searchbutton" type="submit">Search</button>
+    </form>
+    <div class="underline"></div>
+ 
+    <h2>Important Safety Tips</h2>
+    <p>Meet at a safe location to inspect
+    the vehicle.Do not make payment to the seller
+    without inspecting the vehicle.If you think this
+    advert is criminal, report it immediately.</p>
+    <img src="/uploads/images/alert.webp"  class="alert"/>
+    </div>
+ </div>
+    <div class="container">
+    <% if (typeof data==='object'&& data) {%>
+    <% data.forEach((data)=>{%> 
+    <div class="innercontainer">
+    <div class="section">
+        <img src="/uploads/images/<%= data.image[0].filename%>"/>
+            <li>Make <span><%= data.carmake%></span></li>
+            <li>Model <span><%= data.carmodel%></span></li>
+            <li>Mileage <span><%= data.mileage%></span></li>
+            <li>Engine <span><%= data.engine%></span></li>
+            <li>Transmission <span><%= data.transmission%></span></li>
+            <section class="more">
+                <li><a href="/morelistings/<%= data._id%>">More details</a></li>
+            </section>
+        </div>
+     </div>
+      <%})%>
+<%}%>
+    </div>
+    </div>
+    <div class="footer-menu-container">
+        <ul>
+        <li><a href="/home">Privacy Statement</a></li>
+        <li><a href="/contacts">Terms and conditions</a></li>
+        <li><a href="/sell">Subscribe to SMS alerts</a></li>
+        </ul>
+        </div>
+    </body>
+
+    
+<style>
+
+
+.alert{
+width: 200px;
+height: 100px;
+
+    }
+    .footer-menu-container>ul{
+        display: flex;
+        justify-content: center;
+      
+    }
+    .footer-menu-container>ul>li{
+    width:200px;
+    list-style-type: none;
+    }
+    .footer-menu-container>ul>li>a{
+    text-decoration: none;
+    color:wheat;
+    }
+p{
+    width: 280px;
+}
+.searchpage{
+width: 300px;
+height: 700px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+select{
+    width: 130px;
+    height: 30px;
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+    outline: none;
+    border: navajowhite;
+    box-shadow: 2px 2px 2px currentColor;
+}
+.underline {
+  width: 270px;
+  height: 0.1rem;
+  background-color: red;
+  margin:0 auto;
+}
+.searchbutton{
+    width: 130px;
+    height: 30px;
+    font-size: 15px;
+    margin-top: 20px;
+    outline: none;
+    border: navajowhite;
+    font-weight: 900;
+    box-shadow: 2px 2px 2px currentColor;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+    .outersection{
+        display: flex;
+    }
+    .leftsearch{
+        width: 15%;
+        background-color:darkslategray;
+        height:700px;
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 5px #631818;
+    }
+    .header{
+     height: 45px;
+    background-color: darkslategrey;
+    display: flex;
+    align-items: center;
+    width: 91vw;
+    margin-left: 20px;
+    color: wheat;  
+    box-shadow: 3px 3px 5px #631818;
+    }
+    .logo>img{
+        width: 40px;
+        height:40px;
+    }
+       .center{
+        margin-left: 455px;
+       }
+input{
+    width: 300px;
+    height: 30px;
+    outline: none;
+}
+button{
+    width: 100px;
+    height: 30px;
+    outline: none;
+    font-size: large;
+    font-weight: 700;
+    background-color: wheat;
+    border: none;
+}
+
+  *,::after,
+    ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+     .container{
+        display:grid;
+        grid-template-columns: repeat(7,200px);
+        grid-template-rows: repeat(2,400px);
+        grid-column-gap: 10px;
+        height: 100vh;
+        width:90vw;
+        margin:10px auto  ;
+    }
+    .innercontainer
+    {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(44, 27, 6);
+        box-shadow: 2px 2px 2px red;
+    }
+   body{
+        /*background-color: #c59d5f;*/ 
+        background-color: rgb(90, 2, 2);
+        font-family: Montserrat;
+    }
+   img{
+    display:grid; 
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-gap:1em;
+    }
+    .section>li{
+    list-style-type:none;
+    padding:0;
+    margin-top: 5px;
+    width: 200px;
+    font-size: smaller;
+    color:rgb(160 185 133);
+    }
+    .section>li>span{
+    list-style-type:none;
+    padding:0;
+    margin-top: 5px;
+    width: 110;
+    color: aliceblue;
+    font-size:15px;
+    }
+    .menu-container 
+    {
+    margin-bottom: 0.5rem;
+    height:45px;
+    border-bottom:0.1rem solid rgb(44, 27, 6)
+    }
+    .menu-container>ul{
+    display:flex;
+    justify-content:center;
+    }
+    .menu-container>ul>li{
+    width: 100px;
+    padding: 5px;
+    background-color: wheat;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style-type:none;
+    border-radius:5px;
+    }
+    .menu-container>ul>li>a{
+    text-decoration: none;
+    }
+    .more>li{
+    width: 150px;
+    padding: 5px;
+    background-color: wheat;
+    text-align: center;
+    font-size:15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style-type:none;
+    border-radius:5px;
+    box-shadow: 2px 2px 2px currentColor;
+
+    }
+    .more>li>a{
+    text-decoration:none
+    }
+
+  </style>  
+</style>
+
