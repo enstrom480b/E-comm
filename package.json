@@ -1,12 +1,12 @@
 {
   "name": "yser",
-  "version": "1.0.0",
+  "version":"1.0.0",
   "description": "",
-  "main": "app.js",
+  "main":"app.js",
   "scripts": {
-    "start": "node app.js"
+    "start":"node app.js"
   },"engines": {
-    "node": "10.x"
+    "node":"10.x"
   },
   "author": "",
   "license": "ISC",
