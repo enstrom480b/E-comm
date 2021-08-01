@@ -788,7 +788,7 @@ app.put('/:id',bodyparser.urlencoded({extended:false}),function(req,res)
     })   
 })
 const items_per_page=36
-app.get('/home/',requireauth,function(req,res) {
+app.get('/',requireauth,function(req,res) {
 	const page=+(req.query.page||1) 
 	var totalpage;
 	Car.find().sort({sorting:1}).countDocuments().then(data=>{
