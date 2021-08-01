@@ -642,6 +642,7 @@ app.post('/addproducts',upload.single('image'),bodyparser.urlencoded({extended:f
 products.save()
 res.redirect('/addproducts')
 })
+	/*
 app.get('/signup',(req,res)=> {
 	res.render('signup')
 })
@@ -726,7 +727,7 @@ app.post('/activeaccount',function(req,res,next){
     }
 })
 
-/*
+*/
 app.post('/signup',async (req,res)=>{
     const{name,email,password}=req.body
         const emailvalue=name
@@ -756,7 +757,7 @@ app.post('/signup',async (req,res)=>{
 		res.redirect('/login')
 
 })
-*/
+
 app.get('/login',(req,res)=>{
 
 	res.render('login') 
