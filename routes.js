@@ -12,13 +12,13 @@ var morelistingsdata;
 		res.redirect('/home')
     })
 })
-router.get('/guest/addcars',requireauth,function(req,res) {
+router.get('/guest/addcars',function(req,res) {
     res.render('sell')
   })
-  router.get('/morelistings',requireauth,function(req,res) {
+  router.get('/morelistings',function(req,res) {
   })
 
-router.get('/morelistings/:id',requireauth,function(req,res,next) {
+router.get('/morelistings/:id',function(req,res,next) {
 
   Car.find().then((data)=>{ 
  morelistingsdata=(data) 
