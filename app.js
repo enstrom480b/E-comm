@@ -185,7 +185,9 @@ app.get('/',requireauth,function(req,res) {
 	})
 })
 })
-
+app.get('/home',function(req,res){
+res.render('home')
+})
 
 app.get('/forgotpassword',function(req,res,next){
 res.render('forgot_password')
