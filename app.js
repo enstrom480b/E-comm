@@ -668,7 +668,7 @@ newuser.save((err,success)=>{
 	
 	if(err){
 		console.log('err in signup',err)
-		return res.status(400),json({error:err})
+		return res.status(400).json({error:err})
 	}
 	res.json({message:'signup success!'})
 	res.redirect('/login')
