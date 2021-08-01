@@ -163,7 +163,7 @@ res.locals.tracks=req.session.tracksdata
 next()
 })
 
-app.get('/',requireauth,function(req,res) {
+app.get('/',function(req,res) {
 	const page=+(req.query.page||1) 
 	var totalpage;
 	Car.find().sort({sorting:1}).countDocuments().then(data=>{
