@@ -154,6 +154,39 @@ const emailresetdata={
 
 })
 })
+const items_per_page=36
+app.use(function(req,res,next){
+res.locals.success_msg=req.flash('success_msg')
+res.locals.error_msg=req.flash('error_msg')
+res.locals.error=req.flash('error')
+res.locals.tracks=req.session.tracksdata
+next()
+})
+
+app.get('/',requireauth,function(req,res) {
+	const page=+(req.query.page||1) 
+	var totalpage;
+	Car.find().sort({sorting:1}).countDocuments().then(data=>{
+	totalpage=data
+	return Car.find().skip((page-1)*items_per_page)
+	.limit(items_per_page)
+	.then((data)=>{
+			res.render('home',{
+				data:data,pagetitle:'shop',
+				path:'/',
+				currentpage:page,
+				totalproducts:totalpage,
+				hasnextpage:items_per_page*page<totalpage,
+				haspreviouspage:page>1,
+				nextpage:page+1,
+				previuospage:page-1,
+				lastpage:Math.ceil(totalpage/items_per_page)
+	})
+	})
+})
+})
+
+
 app.get('/forgotpassword',function(req,res,next){
 res.render('forgot_password')
 })
@@ -211,13 +244,7 @@ app.get('/admin/users/addcars',function(req,res,next) {
 
 var arr=[]
 var x=[];
-app.use(function(req,res,next){
-res.locals.success_msg=req.flash('success_msg')
-res.locals.error_msg=req.flash('error_msg')
-res.locals.error=req.flash('error')
-res.locals.tracks=req.session.tracksdata
-next()
-})
+
  const maxage=3*24*60*60
  const createtoken=(id)=>{
      return jwt.sign({id},'secret',{
@@ -556,7 +583,7 @@ app.get('/moreproducts/:id',(req,res)=>{
     })
     })  
 })
-     app.post('/edit-products/:id',upload.single('image'),(req,res)=> {
+app.post('/edit-products/:id',upload.single('image'),(req,res)=> {
         var id=req.params.id
         Products.findById(req.params.id).then((data)=>{
           data.title=req.body.title
@@ -628,14 +655,26 @@ const token=jwt.sign({name,email,password},account_activation,{expiresIn:'10m'})
 const data={
     from:'ronser@roserk.com',
     to:email,
-    subject:'accunt activation link',
+    subject:'account activation link',
     html:`please click on given link your account ${CLIENT_URL}/activate/${token}>click to activate your acc</a>`
 }
 mailgun.messages().send(data,function(err,body){
-
+console.log(body)
 })
+let newuser=new User({name,email,password})
+newuser.save((err,success)=>{
+	
+	if(err){
+		console.log('err in signup',err)
+		return res.status(400),json({error:err})
+	}
+	res.json({message:'signup success!'})
+	res.redirect('/login')
+})
+
     })
 })
+
 app.get('/activate/:id',function(req,res,next){
     const data=req.params.id
 res.render('emailactivate',{
@@ -763,7 +802,7 @@ app.put('/:id',bodyparser.urlencoded({extended:false}),function(req,res)
         data.transmission=req.body.transmission,
         data.color=req.body.color,
         data.price=req.body.price, 
-        data.tdastalocation=req.body.location,
+        data.location=req.body.location,
         data.description=req.body.description,
         data.condition=req.body.condition,       
         data.bodytype=req.body.bodytype,
@@ -783,33 +822,12 @@ app.put('/:id',bodyparser.urlencoded({extended:false}),function(req,res)
         data.thumbstart=req.body.thumbstart
         data.save()
         .then((updateddata)=>{
-       res.redirect('/home')
+       res.render('home')
         })
     })   
 })
-const items_per_page=36
-app.get('/',requireauth,function(req,res) {
-	const page=+(req.query.page||1) 
-	var totalpage;
-	Car.find().sort({sorting:1}).countDocuments().then(data=>{
-	totalpage=data
-	return Car.find().skip((page-1)*items_per_page)
-	.limit(items_per_page)
-	.then((data)=>{
-			res.render('home',{
-				data:data,pagetitle:'shop',
-				path:'/',
-				currentpage:page,
-				totalproducts:totalpage,
-				hasnextpage:items_per_page*page<totalpage,
-				haspreviouspage:page>1,
-				nextpage:page+1,
-				previuospage:page-1,
-				lastpage:Math.ceil(totalpage/items_per_page)
-	})
-	})
-})
-})  
+
+  
 
 app.post('/addcars',upload.array('image',12),bodyparser.urlencoded({extended:false}),function(req ,res) {
  
