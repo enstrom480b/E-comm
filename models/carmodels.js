@@ -12,16 +12,15 @@ yearofmanufacture:{
     type:Number
 },
 mileage:{
-    type:Number,
-    default:true
+    type:Number
+
 },
 engine:{
-    type:String,
-    default:true
+    type:String
+
 },
 transmission:{
-    type:String,
-    default:true
+    type:String
 },
 color:{
     type:String
